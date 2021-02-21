@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/DemoHome.unity
+    guid: b0439ac2c7aaf469ca105799ac9cbefd
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/InAppPurchasingDemo.unity
+    guid: d563366c48b2a4105bc35a8f8fad6b34
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/UtilitiesDemo.unity
+    guid: 2a8606c42f28c41b48b5efb8063a2ffe
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 9316550b51b054e9abcc970cf1dcbc1c
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 593e1a5ab903b014fa18c539508df27e
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/PrivacyDemo.unity
+    guid: ce874748bc0044803a895c9013557e22
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/NotificationsDemo.unity
+    guid: 62f1aacac0aee4caa9e24cbfc007f1da
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/NativeUIDemo.unity
+    guid: d40b791e59e7f4b5ba8ece277cb58a98
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/NativeAPIsDemo.unity
+    guid: 4251c65fee20c46b5822cb05ea897c97
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/MediaDemo.unity
+    guid: 90461b0690d6ff54fa92cd1ffce4bc64
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GifDemo.unity
+    guid: 180df364fdbd84164ac0132303b24d00
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_SavedGames.unity
+    guid: c068057967d4840518041ea84e29fea2
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_Multiplayer_TurnBasedKitchenSink.unity
+    guid: be8bfc7d76044ec44927cd91bc5244d9
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_Multiplayer_TicTacToe.unity
+    guid: d2d61c52feae245bfa53af7341806147
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_Multiplayer_RealtimeKitchenSink.unity
+    guid: 28ca428b9b9d526488e16e4de8388f64
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_Multiplayer_RacingGame.unity
+    guid: 5f9f84f2d6bb41549863156364e6f7e8
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo_Multiplayer.unity
+    guid: c595880aae41a834e8ad1e576071fb71
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/GameServicesDemo.unity
+    guid: 830f87b6bbf914858b32fbed28806db0
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/ContactsDemo.unity
+    guid: 011bf3686cd5ad844ae91ef92cbb8a72
+  - enabled: 0
+    path: Assets/EasyMobile/Demo/Scenes/Modules/AdvertisingDemo.unity
+    guid: 15c4a3e17095016469a5675e72669efb
+  m_configObjects: {}
