@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//I hate using Firebase. Need to switch out.  Hopefully switch to MongoDB.
+using Firebase;
+using Firebase.Auth;
+using Firebase.Database;
+
 public class loadContent : MonoBehaviour
 {
     public int amountofStuff = 20;
@@ -37,25 +42,34 @@ public class loadContent : MonoBehaviour
 
         string githubString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/dogepicture.jpg?raw=true";
 
+        //I have to think a way of marking images. It has to be user-side, and not tied to the app in case of reinstallation.
+
+        //#1 Database ties content seen to user to not display again != seen
+        //#2 Webhost ties content seen in a small text file at root of user directory
+
+        //Both are terrible solutions, and will eventually make INCREDIBLY big data heaps full of useless data.
+
+        //However, JSON databases are quicker than text files..
+
+        //Get list of users followed
+        //I'll work these issues out soon. Currently, let me see if I can grab and include support for various file types randomly.
+
+        
+        //The RNG goddess line
+        //Realized this isn't a FTP Server, and I can't use normal REGEX type commands.   ex: *.jpg
+        //A solution to this is to name the files 1-numberofPosts, and this solution only fails
+        //if a user decides to delete a post, and all the posts must be renamed in a batch.
+        
+
+
 
         GameObject childGameObject = Instantiate(picPrefab, parentContentPrefab.transform);
         
         childGameObject.GetComponent<imagescript>().url = githubString;
         
-        //I might need names, probably not.
-        //childGameObject.name = "InstantiateChild";
-
-
-        //Extend length of canvas to fit
-        //parentContentPrefab.GetComponent<RectTransform>().sizeDelta = new Vector2(0,-1*stuffCount);
-        //rt.sizeDelta = new Vector2(100, 100);
-        
-
 
         }
 
-        //Extend length of canvas to fit
-        //parentContentPrefab.GetComponent<RectTransform>().sizeDelta = new Vector2(0,-650*amountofStuff);
 
         //Here, add a pad, end stop codon
         //Basically, make a thing that once detected, or scrolled on, calls this script again.
