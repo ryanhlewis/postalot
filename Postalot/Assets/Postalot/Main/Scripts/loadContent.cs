@@ -117,13 +117,13 @@ public class loadContent : MonoBehaviour
 
         Transform parentTransform = childGameObject.transform;
         
-        parentTransform.GetChild(1).GetComponent<Text>().text = "testuser1"; //Database user call probably.
+        parentTransform.GetChild(2).GetComponent<Text>().text = "testuser1"; //Database user call probably.
         
-        parentTransform.GetChild(0).GetChild(0).GetComponent<imagescript>().url = profileString;
+        parentTransform.GetChild(1).GetChild(0).GetComponent<imagescript>().url = profileString;
         //Coding pitfall: Since we had to wait earlier, all scripts are already called. Must call it again.
         //This is better than an Update() function, but not much better than calling it on creation.
         //Easy fix: disable the script's auto start. Now, it only starts when called.
-        parentTransform.GetChild(0).GetChild(0).GetComponent<imagescript>().Start();
+        parentTransform.GetChild(1).GetChild(0).GetComponent<imagescript>().Start();
 
 
 
