@@ -102,11 +102,29 @@ public class loadContent : MonoBehaviour
 
         //If image fails, fallback to video..
         if(childGameObject.GetComponent<RawImage>().texture.width == 8 && childGameObject.GetComponent<RawImage>().texture.height == 8) {
-        Debug.Log("no way");
-        GameObject.Destroy(childGameObject);
-        GameObject childGameObject1 = Instantiate(vidPrefab, parentContentPrefab.transform);
-        childGameObject1.GetComponent<UnityEngine.Video.VideoPlayer>().url = githubString;
+        //Debug.Log("no way");
+        GameObject.Destroy(childGameObject); //Keep reference!
+        childGameObject = Instantiate(vidPrefab, parentContentPrefab.transform);
+        childGameObject.GetComponent<UnityEngine.Video.VideoPlayer>().url = githubString;
         }
+
+        //Post has been made, now assign username/pfp, comments, description, etc.
+
+        string profileString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/profile.png?raw=true";
+
+        
+        //Unity pitfall: parents are only transform parents??
+
+        Transform parentTransform = childGameObject.transform;
+        
+        parentTransform.GetChild(1).GetComponent<Text>().text = "testuser1"; //Database user call probably.
+        
+        parentTransform.GetChild(0).GetChild(0).GetComponent<imagescript>().url = profileString;
+        //Coding pitfall: Since we had to wait earlier, all scripts are already called. Must call it again.
+        //This is better than an Update() function, but not much better than calling it on creation.
+        //Easy fix: disable the script's auto start. Now, it only starts when called.
+        parentTransform.GetChild(0).GetChild(0).GetComponent<imagescript>().Start();
+
 
 
 

@@ -14,7 +14,7 @@ Texture2D m_Texture;
 
 
 
-void Start(){    
+public void Start(){    
     
     m_RawImage = GetComponent<RawImage>();
 
