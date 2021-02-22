@@ -28,4 +28,13 @@ as seen somehow to not see it again.
 
 ### February 19
 
-TBA
+Day off.
+
+
+### February 20-21 
+
+I expected a little bit of challenge, to say the least. However, I realized quickly that all the things that I had psuedocoded in my head: wildcards, if(video) use vidPrefab, and more could never be actually done. This is because I had simply overlooked the fact that a web host IS NOT a file directory. You cannot access files gung-ho, but rather need their specific file names. I did some pretty nifty code to get around those barriers, and ended up taking away all file extensions to avoid dealing with guessing them, and I guess it gives some privacy to the entire thing. Sure, a person can easily look in my API and see where every file is hosted- but who the hell is going to sit there and try to open a bunch of meaningless numbered files that can't even be given thumbnails? A large deterrent, and a very funny solution to a little bit of privacy, I guess. 
+
+Side note: Still need to think of a privacy type solution. I'm sure not everyone wants their images/videos completely on the Internet, even if saved as strange numbered files.
+
+Also managed to complete an RNG Script to randomly pick things and made some basic calls for a profile picture and a username. Still need to incorporate major database elements, and I've been avoiding doing this because I need to record every detail as I don't plan for Firebase to be that all-encompassing in this Project, and want it to be switched out eventually.
