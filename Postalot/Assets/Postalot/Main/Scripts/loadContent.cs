@@ -40,7 +40,7 @@ public class loadContent : MonoBehaviour
         //Let's load stuffCount elements.
         for(int i = 0;i <= stuffCount; i++){
 
-        string githubString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/dogepicture.jpg?raw=true";
+        string githubString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/";
 
         //I have to think a way of marking images. It has to be user-side, and not tied to the app in case of reinstallation.
 
@@ -54,18 +54,34 @@ public class loadContent : MonoBehaviour
         //Get list of users followed
         //I'll work these issues out soon. Currently, let me see if I can grab and include support for various file types randomly.
 
-        
+        //Get num of posts from user randomly picked
+        //Again, later.
+        int numOfPosts = 6;
+
         //The RNG goddess line
         //Realized this isn't a FTP Server, and I can't use normal REGEX type commands.   ex: *.jpg
         //A solution to this is to name the files 1-numberofPosts, and this solution only fails
         //if a user decides to delete a post, and all the posts must be renamed in a batch.
+
+        //fetch the number
+        int num =  Random.Range(0, numOfPosts); //both inclusive
+
+        //Since it's not a FTP server, I can't exactly predict the file end either.. 6* wont give me 6.jpg
+        //This is seriously getting to be a pain.
+
+        //Cool fix: cut off all endings. It doesn't change file type at all.
+        //Potential problem: knowing whether to use vidPrefab or picPrefab.
+
+        githubString += num + "?raw=true";
+
+
+        GameObject childGameObject = Instantiate(vidPrefab, parentContentPrefab.transform);
+        childGameObject.GetComponent<UnityEngine.Video.VideoPlayer>().url = githubString;
+
+
+        //GameObject childGameObject = Instantiate(picPrefab, parentContentPrefab.transform);
         
-
-
-
-        GameObject childGameObject = Instantiate(picPrefab, parentContentPrefab.transform);
-        
-        childGameObject.GetComponent<imagescript>().url = githubString;
+        //childGameObject.GetComponent<imagescript>().url = githubString;
         
 
         }
