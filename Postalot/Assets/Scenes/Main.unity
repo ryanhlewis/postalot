@@ -1618,7 +1618,7 @@ PrefabInstance:
     - target: {fileID: 2187096471969616692, guid: 128ecf8e2a0ce3c458dad88436ae0f31,
         type: 3}
       propertyPath: url
-      value: https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/dogepicture.jpg?raw=true
+      value: https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/3?raw=true
       objectReference: {fileID: 0}
     - target: {fileID: 2187096471969616694, guid: 128ecf8e2a0ce3c458dad88436ae0f31,
         type: 3}
@@ -1767,7 +1767,7 @@ PrefabInstance:
     - target: {fileID: 4189088051538407882, guid: 3261eebd2d5fff5408f7700fbe5a1e8e,
         type: 3}
       propertyPath: m_Url
-      value: https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/dogevideo.mp4?raw=true
+      value: https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/4?raw=true
       objectReference: {fileID: 0}
     - target: {fileID: 4189088051538407883, guid: 3261eebd2d5fff5408f7700fbe5a1e8e,
         type: 3}

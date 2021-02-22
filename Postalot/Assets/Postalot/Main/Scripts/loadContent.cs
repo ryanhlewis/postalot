@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //I hate using Firebase. Need to switch out.  Hopefully switch to MongoDB.
 using Firebase;
@@ -64,7 +65,7 @@ public class loadContent : MonoBehaviour
         //if a user decides to delete a post, and all the posts must be renamed in a batch.
 
         //fetch the number
-        int num =  Random.Range(0, numOfPosts); //both inclusive
+        int num =  Random.Range(1, numOfPosts); //both inclusive
 
         //Since it's not a FTP server, I can't exactly predict the file end either.. 6* wont give me 6.jpg
         //This is seriously getting to be a pain.
@@ -74,14 +75,41 @@ public class loadContent : MonoBehaviour
 
         githubString += num + "?raw=true";
 
+        //The raw image class is so good that it has a default Red Question mark for stuff it cant access
+        //and I have no idea how to get to it, or compare it, after a long time searching.
 
-        GameObject childGameObject = Instantiate(vidPrefab, parentContentPrefab.transform);
-        childGameObject.GetComponent<UnityEngine.Video.VideoPlayer>().url = githubString;
+        //Eric the Mod from Unity claims that the only way to check is to compare width and height.
+        //https://forum.unity.com/threads/solved-default-image-using-www-class.16459/
+        //This will null out any 8x8 photos anyone wants to post,
+        //and if I want to make this "efficient" and compare each pointer to a red question mark..
+        //you can see how inefficient that would be.
 
+        //Make everything as an image first..
 
-        //GameObject childGameObject = Instantiate(picPrefab, parentContentPrefab.transform);
+        GameObject childGameObject = Instantiate(picPrefab, parentContentPrefab.transform);
         
-        //childGameObject.GetComponent<imagescript>().url = githubString;
+        childGameObject.GetComponent<imagescript>().url = githubString;
+        
+        //Programming in waits is terrible, I know. For some reason, this code is TOO QUICK. It makes the
+        //gameObject and assigns it the URL, but by the time the IF Statement gets checked, the gameObject
+        //has not created or called its image/video. 
+
+        //I just wish the creators of the RawImage class would have just made a NULL texture instead of an uncallable question mark sprite.
+        while (childGameObject.GetComponent<RawImage>().texture == null)
+        {
+        yield return null;
+        }
+
+        //If image fails, fallback to video..
+        if(childGameObject.GetComponent<RawImage>().texture.width == 8 && childGameObject.GetComponent<RawImage>().texture.height == 8) {
+        Debug.Log("no way");
+        GameObject.Destroy(childGameObject);
+        GameObject childGameObject1 = Instantiate(vidPrefab, parentContentPrefab.transform);
+        childGameObject1.GetComponent<UnityEngine.Video.VideoPlayer>().url = githubString;
+        }
+
+
+
         
 
         }
