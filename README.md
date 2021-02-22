@@ -40,4 +40,4 @@ Here's to open-source, and here's to freedom.
 
 
 PS- I've also decided to document some work on a DevLog, as Github commits show little to nothing with the way I commit things. 
-Here: https://github.com/ryanhlewis/postalot/blob/main/devlog.md
+Here: https://github.com/ryanhlewis/postalot/blob/master/devlog.md
