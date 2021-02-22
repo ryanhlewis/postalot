@@ -127,6 +127,12 @@ public class loadContent : MonoBehaviour
 
 
 
+        //For a description, comments, etc. I will need to go back to database programming.
+
+        Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser.DisplayName);
+
+
+
 
         
 
