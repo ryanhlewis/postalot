@@ -232,7 +232,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4526710613270170485}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &2396987907791289589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 7513606467767651328}
   - component: {fileID: 3392025448408601914}
   - component: {fileID: 3778684817809469712}
-  - component: {fileID: 9101986714336010561}
+  - component: {fileID: 1126318634426024909}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -345,7 +345,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &9101986714336010561
+--- !u!114 &1126318634426024909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
