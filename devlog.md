@@ -38,3 +38,17 @@ I expected a little bit of challenge, to say the least. However, I realized quic
 Side note: Still need to think of a privacy type solution. I'm sure not everyone wants their images/videos completely on the Internet, even if saved as strange numbered files.
 
 Also managed to complete an RNG Script to randomly pick things and made some basic calls for a profile picture and a username. Still need to incorporate major database elements, and I've been avoiding doing this because I need to record every detail as I don't plan for Firebase to be that all-encompassing in this Project, and want it to be switched out eventually.
+
+### February 22-24
+
+Overhaul #1. I experienced lag on the application, and after trying out some other Unity Android applications, I decided that this lag was not natural. Therefore, to begin this small overhaul, I completely ripped out TextMeshPro (20mb of useless fonts) and Unity's old Input, which they have replaced with a new Input System. I compressed every image to work better on mobile devices, and got some code to turn off VSync and set a target FPS. Results? Well, it runs fantastically now. No stuttering, no jittering, and no input lag. I managed to take the 6ms response down to 0.6 ms, and the FPS went from 1000 to about 2000 in my editor. I also went through and added occlusion to a large number of the elements in my scene, as well as began to include support for a camera system and with horizontal scrolling and nested views.
+
+Downsides? A couple. 
+
+Putting my old viewports into a new nested interface caused the header and footer to detach from the top and bottom anchors now, and that's a little bit annoying.
+The compression seems to have gone overboard with some specific images, and I'll just have to revert some changes here and there.
+The circular masking for profile pictures seems to have gone away, but I suspect this is a compression issue too.
+Also, have to rework my entire Login Menu to work with regular Text and not TextMeshPro.
+
+Can't have too much good without some bad, I guess. I'll get to work on fixing those issues, and continuing the app.
+
