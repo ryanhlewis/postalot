@@ -12,6 +12,13 @@ public class quickfix : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Fix jitter
+        
+        //Vsync is terrible!
+QualitySettings.vSyncCount = 0;
+Application.targetFrameRate = 1000;
+
+
         //Login else
         
         if(FirebaseAuth.DefaultInstance.CurrentUser == null)

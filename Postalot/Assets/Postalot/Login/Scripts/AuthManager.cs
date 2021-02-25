@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 using Firebase;
 using Firebase.Auth;
-using TMPro;
+//using TMPro;
 using Firebase.Database;
+using UnityEngine.UI;
 
 using UnityEngine.SceneManagement;
 
@@ -20,18 +21,18 @@ public class AuthManager : MonoBehaviour
 
     //Login variables
     [Header("Login")]
-    public TMP_InputField emailLoginField;
-    public TMP_InputField passwordLoginField;
-    public TMP_Text warningLoginText;
-    public TMP_Text confirmLoginText;
+    public InputField emailLoginField;
+    public InputField passwordLoginField;
+    public Text warningLoginText;
+    public Text confirmLoginText;
 
     //Register variables
     [Header("Register")]
-    public TMP_InputField usernameRegisterField;
-    public TMP_InputField emailRegisterField;
-    public TMP_InputField passwordRegisterField;
-    public TMP_InputField passwordRegisterVerifyField;
-    public TMP_Text warningRegisterText;
+    public InputField usernameRegisterField;
+    public InputField emailRegisterField;
+    public InputField passwordRegisterField;
+    public InputField passwordRegisterVerifyField;
+    public Text warningRegisterText;
 
     //Custom variables from me
     [Header("Custom Vars")]

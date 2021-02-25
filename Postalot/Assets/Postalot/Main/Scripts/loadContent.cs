@@ -144,8 +144,8 @@ public class loadContent : MonoBehaviour
         Instantiate(stopCodonPrefab, parentContentPrefab.transform);
 
 
-        //Give one second per vid/image
-        yield return new WaitForSeconds(stuffCount);
+        //End coroutine
+        yield return null;
         //print("Coroutine ended: " + Time.time + " seconds");
     }
 
