@@ -48,6 +48,7 @@ Downsides? A couple.
 Putting my old viewports into a new nested interface caused the header and footer to detach from the top and bottom anchors now, and that's a little bit annoying.
 The compression seems to have gone overboard with some specific images, and I'll just have to revert some changes here and there.
 The circular masking for profile pictures seems to have gone away, but I suspect this is a compression issue too.
+Also, have to rework my entire Login Menu to work with regular Text and not TextMeshPro.
 
 Can't have too much good without some bad, I guess. I'll get to work on fixing those issues, and continuing the app.
 
