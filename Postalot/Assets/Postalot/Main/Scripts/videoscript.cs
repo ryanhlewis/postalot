@@ -32,7 +32,7 @@ void Start(){
 public IEnumerator isReady() {
 
     while(!videoPlayer.isPrepared) {
-    Debug.Log("Not ready!");
+    //Debug.Log("Not ready!");
     yield return null;
     }
 
