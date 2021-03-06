@@ -465,6 +465,11 @@ PrefabInstance:
       propertyPath: m_Url
       value: https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/4?raw=true
       objectReference: {fileID: 0}
+    - target: {fileID: 4189088051538407882, guid: 3261eebd2d5fff5408f7700fbe5a1e8e,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4189088051538407883, guid: 3261eebd2d5fff5408f7700fbe5a1e8e,
         type: 3}
       propertyPath: m_LocalPosition.x
