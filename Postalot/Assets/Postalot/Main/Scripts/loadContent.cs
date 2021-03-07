@@ -10,11 +10,16 @@ using Firebase.Database;
 
 public class loadContent : MonoBehaviour
 {
+    //Custom
     public int amountofStuff = 20;
     public GameObject picPrefab;
     public GameObject vidPrefab;
     public GameObject parentContentPrefab;
     public GameObject stopCodonPrefab;
+
+    //Database
+    public FirebaseAuth auth;    
+    public DatabaseReference DBreference;
 
     // Start is called before the first frame update
     public void Start()
@@ -25,11 +30,17 @@ public class loadContent : MonoBehaviour
         //Make new imageRaw, vidRaw, objects into Content from github.
         //Extend length of Content to fit.
 
+        //Database integration
+        auth = FirebaseAuth.DefaultInstance;
+        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+
         //Extend length of canvas to fit
         parentContentPrefab.GetComponent<RectTransform>().sizeDelta += new Vector2(0,-650*amountofStuff);
 
         //Coroutine.. Async Command to load content..
         StartCoroutine(loadStuff(amountofStuff));
+
+        
 
         
     }
@@ -38,10 +49,33 @@ public class loadContent : MonoBehaviour
     private IEnumerator loadStuff(int stuffCount)
     {
 
+        //Happens once every 20-30 posts / reload
+
+        //Get list of users followed
+
+        var DBTask = DBreference.Child("usersFollowed").Child(auth.CurrentUser.DisplayName).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        if (DBTask.Result.Value == null)
+             {
+                //They follow nobody! Empty feed!   //Or random feed..?
+                Debug.Log("Broken!");
+                yield break;
+            }
+        
+        //Debug.Log(DBTask.Result.Value);
+
+        string newString = (string)DBTask.Result.Value;
+        string[] usersFollowedArray = newString.Split(' ');
+        
+        //Debug.Log(usersFollowedArray[0] + usersFollowedArray[2] + usersFollowedArray[1]);
+
+
+
+
         //Let's load stuffCount elements.
         for(int i = 0;i <= stuffCount; i++){
 
-        string githubString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/";
+        string githubString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/";
 
         //I have to think a way of marking images. It has to be user-side, and not tied to the app in case of reinstallation.
 
@@ -52,12 +86,22 @@ public class loadContent : MonoBehaviour
 
         //However, JSON databases are quicker than text files..
 
-        //Get list of users followed
-        //I'll work these issues out soon. Currently, let me see if I can grab and include support for various file types randomly.
+        //Choose a user..
+
+        string chosenUser = usersFollowedArray[Random.Range(0,usersFollowedArray.Length)];
+        Debug.Log(chosenUser);
+
+
 
         //Get num of posts from user randomly picked
         //Again, later.
-        int numOfPosts = 6;
+        var DBTask1 = DBreference.Child("numOfPosts").Child(chosenUser).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask1.IsCompleted);
+
+        //string tempConversion = (string)DBTask1.Result.Value;
+        //int numOfPosts = int.Parse(tempConversion);
+        //Debug.Log(DBTask1.Result.Value);
+        int numOfPosts = System.Convert.ToInt32(DBTask1.Result.Value);
 
         //The RNG goddess line
         //Realized this isn't a FTP Server, and I can't use normal REGEX type commands.   ex: *.jpg
@@ -73,7 +117,7 @@ public class loadContent : MonoBehaviour
         //Cool fix: cut off all endings. It doesn't change file type at all.
         //Potential problem: knowing whether to use vidPrefab or picPrefab.
 
-        githubString += num + "?raw=true";
+        githubString += chosenUser + "/" + num + "?raw=true";
 
         //The raw image class is so good that it has a default Red Question mark for stuff it cant access
         //and I have no idea how to get to it, or compare it, after a long time searching.
@@ -110,14 +154,14 @@ public class loadContent : MonoBehaviour
 
         //Post has been made, now assign username/pfp, comments, description, etc.
 
-        string profileString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/testuser1/profile.png?raw=true";
+        string profileString = "https://github.com/ryanhlewis/postalot/blob/master/PostalotData/" + chosenUser + "/profile.png?raw=true";
 
         
         //Unity pitfall: parents are only transform parents??
 
         Transform parentTransform = childGameObject.transform;
         
-        parentTransform.GetChild(2).GetComponent<Text>().text = "testuser1"; //Database user call probably.
+        parentTransform.GetChild(2).GetComponent<Text>().text = chosenUser; //Database user call probably.
         
         parentTransform.GetChild(1).GetChild(0).GetComponent<imagescript>().url = profileString;
 
