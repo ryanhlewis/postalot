@@ -30,8 +30,14 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         public int startingPanel = 0;
         public bool swipeGestures = true;
         public float minimumSwipeSpeed = 0f;
-        public Button previousButton = null;
-        public Button nextButton = null;
+       
+
+        public Button[] previousButton;
+
+
+        [SerializeField] public Button[] nextButton;
+        
+
         public GameObject pagination = null;
         public bool toggleNavigation = true;
         public SnapTarget snapTarget = SnapTarget.Next;
@@ -317,15 +323,19 @@ namespace DanielLochner.Assets.SimpleScrollSnap
             // Previous Button
             if (previousButton != null)
             {
-                previousButton.onClick.RemoveAllListeners();
-                previousButton.onClick.AddListener(GoToPreviousPanel);
+                for(int x = 0; x < previousButton.Length; x++) {
+                previousButton[x].onClick.RemoveAllListeners();
+                previousButton[x].onClick.AddListener(GoToPreviousPanel);
+                }
             }
 
             // Next Button
             if (nextButton != null)
             {
-                nextButton.onClick.RemoveAllListeners();
-                nextButton.onClick.AddListener(GoToNextPanel);
+                for(int x = 0; x < nextButton.Length; x++) {
+                nextButton[x].onClick.RemoveAllListeners();
+                nextButton[x].onClick.AddListener(GoToNextPanel);
+                }
             }
 
             // Pagination

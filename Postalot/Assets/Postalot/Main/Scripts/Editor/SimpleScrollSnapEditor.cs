@@ -192,11 +192,14 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         }
         private void PreviousButton()
         {
-            EditorGUILayout.ObjectField(previousButton, typeof(Button), new GUIContent("Previous Button", "(Optional) Button used to transition to the previous panel."));
+            
+        EditorGUILayout.PropertyField(previousButton, true); 
+       
         }
         private void NextButton()
         {
-            EditorGUILayout.ObjectField(nextButton, typeof(Button), new GUIContent("Next Button", "(Optional) Button used to transition to the next panel."));
+            EditorGUILayout.PropertyField(nextButton, true); 
+
         }
         private void Pagination()
         {
