@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Appwrite;
 
-//I hate using Firebase. Need to switch out.  Hopefully switch to MongoDB.
-using Firebase;
-using Firebase.Auth;
-using Firebase.Database;
 
 public class loadContent : MonoBehaviour
 {
@@ -18,21 +15,24 @@ public class loadContent : MonoBehaviour
     public GameObject stopCodonPrefab;
 
     //Database
-    public FirebaseAuth auth;    
-    public DatabaseReference DBreference;
+   
+    Client client = new Client();
+    
 
     // Start is called before the first frame update
     public void Start()
     {
+        client .SetEndPoint("https://postalot.ga/v1").SetProject("6054edbdaa0f1");
+
+        //Account and Storage
+        Account account = new Account(client);
+        Storage storage = new Storage(client);
 
         //Script is called once every so often.
 
         //Make new imageRaw, vidRaw, objects into Content from github.
         //Extend length of Content to fit.
 
-        //Database integration
-        auth = FirebaseAuth.DefaultInstance;
-        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
 
         //Extend length of canvas to fit
         parentContentPrefab.GetComponent<RectTransform>().sizeDelta += new Vector2(0,-650*amountofStuff);
@@ -51,8 +51,8 @@ public class loadContent : MonoBehaviour
 
         //Happens once every 20-30 posts / reload
 
-        //Get list of users followed
-
+        //Get list of users followed                        Need to redo this for AppWrite.
+/*
         var DBTask = DBreference.Child("usersFollowed").Child(auth.CurrentUser.DisplayName).GetValueAsync();
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
         if (DBTask.Result.Value == null)
@@ -61,10 +61,11 @@ public class loadContent : MonoBehaviour
                 Debug.Log("Broken!");
                 yield break;
             }
-        
+  */      
         //Debug.Log(DBTask.Result.Value);
 
-        string newString = (string)DBTask.Result.Value;
+    //    string newString = (string)DBTask.Result.Value;
+        string newString = "testuser1 testuser2";
         string[] usersFollowedArray = newString.Split(' ');
         
         //Debug.Log(usersFollowedArray[0] + usersFollowedArray[2] + usersFollowedArray[1]);
@@ -92,16 +93,18 @@ public class loadContent : MonoBehaviour
         Debug.Log(chosenUser);
 
 
-
+                                                            //Need to redo this in AppWrite
         //Get num of posts from user randomly picked
         //Again, later.
+        /*
         var DBTask1 = DBreference.Child("numOfPosts").Child(chosenUser).GetValueAsync();
         yield return new WaitUntil(predicate: () => DBTask1.IsCompleted);
-
+*/
         //string tempConversion = (string)DBTask1.Result.Value;
         //int numOfPosts = int.Parse(tempConversion);
         //Debug.Log(DBTask1.Result.Value);
-        int numOfPosts = System.Convert.ToInt32(DBTask1.Result.Value);
+        //int numOfPosts = System.Convert.ToInt32(DBTask1.Result.Value);
+        int numOfPosts = 2;
 
         //The RNG goddess line
         //Realized this isn't a FTP Server, and I can't use normal REGEX type commands.   ex: *.jpg
@@ -171,7 +174,7 @@ public class loadContent : MonoBehaviour
 
         //For a description, comments, etc. I will need to go back to database programming.
 
-        Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser.DisplayName);
+        //Debug.Log(FirebaseAuth.DefaultInstance.CurrentUser.DisplayName);
 
 
 
